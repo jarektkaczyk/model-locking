@@ -1,0 +1,32 @@
+{
+    "name": "sofa/model-locking",
+    "description": "Pseudo pessimistic model locking with broadcasted events for Laravel Eloquent ORM.",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/jarektkaczyk/model-locking/issues",
+        "source": "https://github.com/jarektkaczyk/model-locking"
+    },
+    "keywords": ["laravel", "eloquent", "ORM", "active record", "pessimistic lock", "locking", "model lock"],
+    "authors": [
+        {
+            "name": "Jarek Tkaczyk",
+            "email": "jarek@softonsofa.com",
+            "homepage": "https://softonsofa.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "illuminate/database": "5.3.*",
+        "illuminate/queue": "5.3.*"
+    },
+    "require-dev": {
+        "crysalead/kahlan": "~2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sofa\\ModelLocking\\": "src"
+        }
+    },
+    "minimum-stability": "stable"
+}
