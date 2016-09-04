@@ -1,6 +1,6 @@
 # Sofa/ModelLocking
 
-[![Build Status](https://travis-ci.org/jarektkaczyk/model-locking.svg)](https://travis-ci.org/jarektkaczyk/model-locking) [![Downloads](https://poser.pugx.org/sofa/model-locking/downloads)](https://packagist.org/packages/sofa/model-locking) [![stable](https://poser.pugx.org/sofa/model-locking/v/stable.svg)](https://packagist.org/packages/sofa/model-locking)
+[![Build Status](https://travis-ci.org/jarektkaczyk/model-locking.svg)](https://travis-ci.org/jarektkaczyk/model-locking) [![Coverage Status](https://coveralls.io/repos/jarektkaczyk/model-locking/badge.svg)](https://coveralls.io/r/jarektkaczyk/model-locking) [![Downloads](https://poser.pugx.org/sofa/model-locking/downloads)](https://packagist.org/packages/sofa/model-locking) [![stable](https://poser.pugx.org/sofa/model-locking/v/stable.svg)](https://packagist.org/packages/sofa/model-locking)
 
 Pseudo pessimistic model locking for the [Eloquent ORM (Laravel 5.3+)](https://laravel.com/docs/5.3/eloquent). 
 
