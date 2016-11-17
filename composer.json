@@ -21,7 +21,7 @@
         "illuminate/queue": "5.3.*"
     },
     "require-dev": {
-        "crysalead/kahlan": "~2.5"
+        "kahlan/kahlan": "~2.5"
     },
     "autoload": {
         "psr-4": {
