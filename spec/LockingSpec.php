@@ -73,7 +73,7 @@ describe('Sofa\ModelLocking\Locking', function () {
         });
         $this->lock->setRelation('model', $this->post);
         $this->post->requestUnlock();
-        expect($this->post->lockedUntil().'')->toEqual(Carbon::now()->addSeconds(66).'');
+        expect($this->post->lockedUntil())->toEqual(Carbon::now()->addSeconds(66)->toDateTimeString());
     });
 
 
@@ -103,14 +103,14 @@ describe('Sofa\ModelLocking\Locking', function () {
 
         it('locks the model for provided time by given user', function () {
             $this->post->lock('2 minutes', $this->user);
-            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(2));
+            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(2)->toDateTimeString());
             expect($this->post->lockedBy())->toBe($this->user);
         });
 
         it('next takes `lock_duration` property if set on the model', function () {
             $this->post->lock_duration = '3 minutes';
             $this->post->lock();
-            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(3));
+            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(3)->toDateTimeString());
         });
 
         it('then falls back to the config', function () {
@@ -119,12 +119,12 @@ describe('Sofa\ModelLocking\Locking', function () {
                 if ($key == 'model_locking.use_authenticated_user') return false;
             });
             $this->post->lock();
-            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(10));
+            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(10)->toDateTimeString());
         });
 
         it('finally gets the default value: 5 minutes', function () {
             $this->post->lock();
-            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(5));
+            expect($this->post->lockedUntil())->toEqual(Carbon::now()->addMinutes(5)->toDateTimeString());
         });
     });
 

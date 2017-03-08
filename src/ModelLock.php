@@ -14,7 +14,9 @@ use Illuminate\Contracts\Auth\Authenticatable;
 class ModelLock extends Model
 {
     /** @var array Attributes mutated to Carbon */
-    protected $dates = ['locked_until'];
+    protected $casts = [
+        'locked_until' => 'datetime',
+    ];
 
     /**
      * Register 'saving' event handler that will take care of storing default values on the lock.
