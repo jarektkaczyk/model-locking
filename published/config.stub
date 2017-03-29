@@ -49,4 +49,14 @@ return [
         'request' => [],
         'unlocked' => [],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Names of the events that are passed on when broadcasting.
+    |--------------------------------------------------------------------------
+    */
+    'broadcast_as' => [
+        Sofa\ModelLocking\ModelLocked::class => null,
+        Sofa\ModelLocking\ModelUnlocked::class => null,
+    ],
 ];

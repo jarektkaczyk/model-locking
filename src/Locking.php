@@ -15,6 +15,16 @@ use Illuminate\Contracts\Auth\Authenticatable;
 trait Locking
 {
     /**
+     * Get representation of the model that will be sent onto the queue (and to broadcasting later).
+     *
+     * @return mixed
+     */
+    public function broadcastAs()
+    {
+        return $this->toArray();
+    }
+
+    /**
      * Determine whether model is not locked at all or provided token unlocks it.
      *
      * @param  string  $token

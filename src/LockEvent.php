@@ -27,4 +27,26 @@ abstract class LockEvent implements ShouldBroadcast
      * @return array
      */
     abstract public function broadcastOn();
+
+    /**
+     * Get the data that should be sent with the broadcasted event.
+     *
+     * @return array
+     */
+    public function broadcastWith()
+    {
+        return [
+            'model' => $this->model->broadcastAs(),
+        ];
+    }
+
+    /**
+     * The event's broadcast name.
+     *
+     * @return string
+     */
+    public function broadcastAs()
+    {
+        return config('model_locking.broadcast_as.'.static::class, static::class);
+    }
 }
