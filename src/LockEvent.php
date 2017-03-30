@@ -47,6 +47,6 @@ abstract class LockEvent implements ShouldBroadcast
      */
     public function broadcastAs()
     {
-        return config('model_locking.broadcast_as.'.static::class, static::class);
+        return config('model_locking.broadcast_as.'.static::class) ?: static::class;
     }
 }
