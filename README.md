@@ -11,7 +11,8 @@ Package goes along with Laravel (Illuminate) versioning for your convenience:
 Laravel / Illuminate **5.3+**:
 
 1. require package: `composer require sofa/model-locking:"~5.3"`
-2. add to your `config/app.php` under `providers`: `Sofa\ModelLocking\ServiceProvider::class,`
+2. if you're using Laravel 5.1 - 5.4, add to your `config/app.php` under `providers`: `Sofa\ModelLocking\ServiceProvider::class,`,  
+   if you're using Laravel 5.5+ the service provider will register itself automatically
 3. publish package assets: `php artisan vendor:publish --provider="Sofa\ModelLocking\ServiceProvider"`
 4. create model locks table by running `php artisan migrate`
 5. add trait `use \Sofa\ModelLocking\Locking` to the model that should offer locking
