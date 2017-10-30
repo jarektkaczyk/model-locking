@@ -172,6 +172,7 @@ describe('Sofa\ModelLocking\Locking', function () {
             'model_locking.use_authenticated_user' => null,
             'model_locking.request_shorten_duration' => null,
             'model_locking.user' => null,
+            'model_locking.use_tokens' => true,
             'auth.providers.users.model' => null,
         ];
     });
