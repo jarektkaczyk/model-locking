@@ -34,10 +34,8 @@ class ModelLock extends Model
                 $lock->user_id = $lock->lockingUser();
             }
 
-            if (config('model_locking.use_tokens', true)) {
-                if (!$lock->token) {
-                    $lock->token = $lock->generateToken();
-                }
+            if (!$lock->token) {
+                $lock->token = $lock->generateToken();
             }
         });
 
@@ -55,11 +53,7 @@ class ModelLock extends Model
      */
     public function getToken()
     {
-        if (config('model_locking.use_tokens', true)) {
-            return $this->token ?: $this->token = $this->generateToken();
-        }
-
-        return true;
+        return $this->token ?: $this->token = $this->generateToken();
     }
 
     /**
