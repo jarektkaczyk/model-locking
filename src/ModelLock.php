@@ -84,7 +84,7 @@ class ModelLock extends Model
             return $this->token === $token;
         }
 
-        return $this->user_id == auth()->user()->id;
+        return $this->user_id === auth()->user()->id;
     }
 
     /**
