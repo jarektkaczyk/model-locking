@@ -72,9 +72,13 @@ class ModelLock extends Model
      * @param  string $token
      * @return boolean
      */
-    public function verify($token)
+    public function verify($token = null)
     {
-        return $this->token === $token;
+        if (config('model_locking.use_tokens', true)) {
+            return $this->token === $token;
+        }
+
+        return $this->user_id === auth()->user()->id;
     }
 
     /**
