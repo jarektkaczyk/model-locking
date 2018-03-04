@@ -28,5 +28,12 @@
             "Sofa\\ModelLocking\\": "src"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Sofa\\ModelLocking\\ServiceProvider"
+            ]
+        }
+    }
 }
