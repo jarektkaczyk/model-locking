@@ -38,6 +38,35 @@ trait Locking
 
         return true;
     }
+    
+    /**
+     * Determine weather model is locked to the current user
+     *
+     * @return boolean
+     */
+    public function isLockedToCurrentUser()
+    {
+        if ($this->isLocked()) {
+            return $this->modelLock->verifyCurrentUser();
+        }
+
+        return false;
+    }
+
+    /**
+     * Determine weather model is locked to the provided user
+     *
+     * @param  App\User $user
+     * @return boolean
+     */
+    public function isLockedToUser($user)
+    {
+        if ($this->isLocked()) {
+            return $this->modelLock->verifyUser($user);
+        }
+
+        return false;
+    }
 
     /**
      * Determine whether there is an active lock on the model.
@@ -51,14 +80,26 @@ trait Locking
     }
 
     /**
-     * Get timestamp when model gets unlocked.
+     * Get the timestamp when model gets unlocked
      *
+     * @param string $format
+     * @param integer $sub_minutes
      * @return \Carbon\Carbon|null
      */
-    public function lockedUntil()
+    public function lockedUntil($format = null, $sub_minutes = 0)
     {
         if ($this->isLocked()) {
-            return $this->modelLock->locked_until;
+            $timestamp = $this->modelLock->locked_until;
+
+            if ($sub_minutes > 0) {
+                $timestamp = $timestamp->subMinutes($sub_minutes);
+            }
+
+            if (! is_null($format)) {
+                return $timestamp->format($format);
+            }
+
+            return $timestamp;
         }
     }
 
@@ -111,6 +152,18 @@ trait Locking
     }
 
     /**
+     * Lock to a specific user for an optional duration
+     *
+     * @param  App\User $user
+     * @param  integer $duration
+     * @return string
+     */
+    public function lockTo($user, $duration = null)
+    {
+        return $this->lock($duration, $user);
+    }
+
+    /**
      * Release the lock.
      *
      * @return $this
@@ -152,5 +205,16 @@ trait Locking
     public function modelLock()
     {
         return $this->morphOne(ModelLock::class, 'model')->active();
+    }
+
+    /**
+     * Relation of locked models based on the user provided.
+     *
+     * @param  App\User $user
+     * @return ModelLock
+     */
+    public function lockedModelsByUser($user)
+    {
+        return ModelLock::active()->where('user_id', $user->id);
     }
 }

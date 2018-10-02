@@ -82,6 +82,27 @@ class ModelLock extends Model
     }
 
     /**
+     * Verify if the current user is the locked-to user
+     *
+     * @return boolean
+     */
+    public function verifyCurrentUser()
+    {
+        return $this->user_id === auth()->user()->id;
+    }
+
+    /**
+     * Verify if the provided user's id is the locked-to user
+     *
+     * @param  App\User $user
+     * @return void
+     */
+    public function verifyUser($user)
+    {
+        return $this->user_id == $user->id;
+    }
+
+    /**
      * Lock a model for period of time.
      *
      * Duration precedence:
