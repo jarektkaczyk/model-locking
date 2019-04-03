@@ -104,7 +104,7 @@ trait Locking
         $this->setRelation('modelLock', $lock);
 
         if ($events = $this->getEventDispatcher()) {
-            $events->fire(new ModelLocked($this));
+            $events->dispatch(new ModelLocked($this));
         }
 
         return $lock->getToken();
