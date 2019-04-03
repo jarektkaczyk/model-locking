@@ -122,7 +122,7 @@ trait Locking
         unset($this->relations['modelLock']);
 
         if ($events = $this->getEventDispatcher()) {
-            $events->fire(new ModelUnlocked($this));
+            $events->dispatch(new ModelUnlocked($this));
         }
 
         return $this;
