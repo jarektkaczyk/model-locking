@@ -43,7 +43,7 @@ class ModelLock extends Model
 
         static::deleted(function ($lock) {
             if ($lock->model && $events = $lock->getEventDispatcher()) {
-                $events->fire(new ModelUnlocked($lock->model));
+                $events->dispatch(new ModelUnlocked($lock->model));
             }
         });
     }
@@ -156,7 +156,7 @@ class ModelLock extends Model
     public function requestUnlock($user = null, $message = '', $shorten = true)
     {
         if ($events = $this->getEventDispatcher()) {
-            $events->fire(new ModelUnlockRequested($this->model, $user, $message));
+            $events->dispatch(new ModelUnlockRequested($this->model, $user, $message));
 
             if ($shorten && $new_duration = config('model_locking.request_shorten_duration')) {
                 $this->lock($new_duration, $this->user_id);
