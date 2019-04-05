@@ -29,7 +29,7 @@ class FlushExpiredLocks extends Command
         ModelLock::expired()->delete();
 
         foreach ($unlocked as $model) {
-            $events->fire(new ModelUnlocked($model));
+            $events->dispatch(new ModelUnlocked($model));
         }
 
         $this->info('Expired model locks flushed!');
