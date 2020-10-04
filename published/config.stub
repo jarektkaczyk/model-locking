@@ -66,4 +66,11 @@ return [
         Sofa\ModelLocking\ModelLocked::class => null,
         Sofa\ModelLocking\ModelUnlocked::class => null,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Determine if the package should broadcast events.
+    |--------------------------------------------------------------------------
+    */
+    'broadcast_enabled' => env('MODEL_LOCKING_BROADCAST_ENABLED', true),
 ];
