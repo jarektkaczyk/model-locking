@@ -22,6 +22,16 @@ abstract class LockEvent implements ShouldBroadcast
     }
 
     /**
+     * Get the queue where broadcasts are dispatched to.
+     *
+     * @return string|null
+     */
+    public function broadcastQueue()
+    {
+        return config('model_locking.broadcast_queue');
+    }
+
+    /**
      * Get the channels the event should broadcast on.
      *
      * @return array
