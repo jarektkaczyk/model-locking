@@ -66,4 +66,11 @@ return [
         Sofa\ModelLocking\ModelLocked::class => null,
         Sofa\ModelLocking\ModelUnlocked::class => null,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Queue where broadcasts are dispatched to.
+    |--------------------------------------------------------------------------
+    */
+    'broadcast_queue' => null,
 ];
